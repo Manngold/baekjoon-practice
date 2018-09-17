@@ -1,4 +1,6 @@
 ﻿  sugar-carry.c
+c:\users\jsw48\desktop\dev\algorithm-practice\algorithm-practice\sugar-carry.c(7): warning C4013: 'sugarCarry'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
 c:\users\jsw48\desktop\dev\algorithm-practice\algorithm-practice\sugar-carry.c(6): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1274): note: 'scanf' 선언을 참조하십시오.
+c:\users\jsw48\desktop\dev\algorithm-practice\algorithm-practice\sugar-carry.c(13): warning C4716: 'sugarCarry': 값을 반환해야 합니다.
   algorithm-practice.vcxproj -> C:\Users\jsw48\Desktop\Dev\algorithm-practice\Debug\algorithm-practice.exe
