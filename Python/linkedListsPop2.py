@@ -62,10 +62,9 @@ class LinkedList:
         if curr == self.tail:
             prev.next = None
             self.tail = prev
-            self.nodeCount -= 1
         else:
             prev.next = curr.next
-            self.nodeCount -= 1
+        self.nodeCount -= 1
         return data
 
         
