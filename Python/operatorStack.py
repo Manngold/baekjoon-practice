@@ -37,15 +37,18 @@ def solution(S):
                 opStack.pop()
             else:
                 if c in prec:
-                    top = opStack.peek()
-                    if prec[c] >= prec[top]:
-                        answer += opStack.peek()
-                        opStack.pop()
+                    if opStack.isEmpty():
                         opStack.push(c)
+                    else:
+                        if prec[c] > prec[opStack.peek()]:
+                            opStack.push(c)
+                        else:
+                            answer += opStack.pop()
+                            opStack.push(c)
                 else:
-                        answer += c
+                    answer += c
+    
     while not opStack.isEmpty():
-        answer += opStack.peek()
-        opStack.pop()
+        answer += opStack.pop()
 
     return answer
