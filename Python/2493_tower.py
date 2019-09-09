@@ -1,31 +1,30 @@
 towers = int(input())
 levels = list(map(int,input().split()))
 answers = []
-idx = 1
+stack = []
 
 for i in range(towers):
     if i == 0:
         answers.append(0)
-        idx = 1
+        stack.append(i)
         continue
-    elif i == 1:
-        if levels[i] <= levels[i - idx]:
-            answers.append(i - idx + 1)
-            idx = 1
-            continue
-        else:
+    if levels[i] > levels[stack[-1]]:
+        while len(stack) != 0:
+            if levels[i] > levels[stack[-1]]:
+                stack.pop()
+                continue
+            if levels[i] <= levels[stack[-1]]:
+                answers.append(stack[-1] + 1)
+                stack.append(i)
+                break
+        if len(stack) == 0:
             answers.append(0)
-            idx = 1
+            stack.append(i)
             continue
-    while levels[i] > levels[i - idx]:
-        if idx == i:
-            idx = 1
-            answers.append(0)
-            break
-        idx += 1
-
-    answers.append(i - idx + 1)
-    idx = 1
+    if levels[i] <= levels[stack[-1]] and len(answers) == i:
+        answers.append(stack[-1] + 1)
+        stack.append(i)
+        continue
 
 print(" ".join(map(str, answers)))
 
