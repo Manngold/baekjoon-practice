@@ -1,33 +1,29 @@
 n, m = map(int, input().split())
 
-line = []
+q = []
+
+cnt = [0] * n
+compare = []
+answer = []
 
 for i in range(m):
     a, b = map(int, input().split())
-    if not a in line and b in line:
-        storage = []
-        for j in range(len(line)):
-            if line[j] == b:
-                storage = line[j:]
-                line = line[:j]
-                line.append(a)
-                line += storage
-                break
-            else:
-                continue
-    elif a in line and not b in line:
-        storage = []
-        for j in range(len(line)):
-            if line[j] == a:
-                storage = line[a+1:]
-                line = line[:a+1]
-                line.append(b)
-                line += storage
-                break
-            else:
-                continue
-    else:
-        line.append(a)
-        line.append(b)
+    cnt[b-1] += 1
+    compare.append([a, b])
 
-print(line)
+for i in range(n):
+    if cnt[i] == 0:
+        q.append(i + 1)
+
+while q:
+    for i in q:
+        temp = i
+        q.remove(i)
+        answer.append(temp)
+        for j in range(len(compare)):
+            a, b = compare[j][0], compare[j][1]
+            cnt[b-1] -= 1
+            if cnt[b-1] == 0:
+                q.append(b)
+
+print(answer)
