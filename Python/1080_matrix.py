@@ -11,31 +11,17 @@ for i in range(n):
 
 answer = 0
 
-for i in range(n):
-    if n <= 3 or m <= 3:
+for i in range(n-2):
+    if n < 3 or m < 3:
         break
-    for j in range(m):
+    for j in range(m-2):
         if a[i][j] != b[i][j]:
             for k in range(i, i+3):
-                if k >= n:
-                    continue
                 for t in range(j, j + 3):
-                    if t >= m:
-                        continue
-                    a[k][t] = b[k][t]
+                    a[k][t] = 1 - a[k][t]
             answer += 1
-        else:
-            continue
 
-if n < 3 or m < 3:
-    if not a == b:
-        print(-1)
-    else:
-        print(0)
-elif n == 3 and m == 3:
-    if not a == b:
-        print(1)
-    else:
-        print(answer)
-else:
+if a == b:
     print(answer)
+else:
+    print(-1)
