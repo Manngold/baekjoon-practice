@@ -34,7 +34,3 @@ if len(answer) > 1:
     print("?")
 elif len(answer) == 1:
     print(answer[-1])
-
-
-
-
