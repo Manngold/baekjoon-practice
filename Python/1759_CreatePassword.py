@@ -8,11 +8,17 @@ aeiou = "aeiou"
 answers = [];
 
 def checker(word):
-  isValid = False
+  a= 0
+  b= 0
   for i in word:
     if i in aeiou:
-      isValid = True
-  return isValid
+      a += 1
+    else:
+      b += 1
+  if a >=1 and b >=2:
+    return True
+  else:
+    return False
 
 for i in range(len(c) - l + 1):
   t = ""
@@ -29,5 +35,4 @@ for i in range(len(c) - l + 1):
 for i in answers:
   print(i)
   
-    
-
+  
