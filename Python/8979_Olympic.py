@@ -1,30 +1,41 @@
 n, k = map(int, input().split())
+
 arr = []
+target = []
+
+gold = []
+silver = []
+bronz = []
 
 for _ in range(n):
   arr.append(list(map(int, input().split())))
-
-arr = sorted(arr, key = lambda x: (-x[1],-x[2],-x[3]))
-
-rank = []
+  if arr[-1][0] == k:
+    target = arr[-1]
 
 for i in arr:
-  if len(rank) == 0:
-    rank.append(i)
-  else:
-    if rank[-1][1:4] == i[1:4]:
-      rank[-1] += i
+  if i == target:
+    continue
+  if i[1] > target[1]:
+    if len(gold) == 0:
+      gold.append(i)
     else:
-      rank.append(i)
+      gold.append(i)
+  elif i[1] == target[1]:
+    if i[2] > target[2]:
+      if len(silver) == 0:
+        silver.append(i)
+      else:
+        silver.append(i)
+    elif i[2] == target[2]:
+      if i[3] > target[3]:
+        if len(bronz) == 0:
+          bronz.append(i)
+        else:
+          bronz.append(i)
 
-for i in range(len(rank)):
-  if len(rank[i]) == 4:
-    if rank[i][0] == k:
-      print(i+1)
-      break
-  else:
-    for j in range(0,len(rank[i]),4):
-      if rank[i][j] == k:
-        print(i + 1)
-        break
+print(len(gold)+len(silver)+len(bronz) + 1)
+        
+      
+
+
 
